@@ -9,8 +9,9 @@
         margin: 0;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         background-color: #fdfdfd;
-        color: #222222;
+        color: #222;
         line-height: 1.8;
+        transition: background-color 0.3s, color 0.3s;
     }
 
     a {
@@ -27,7 +28,7 @@
         justify-content: center;
         background-color: #ffffff;
         border-bottom: 2px solid #ddd;
-        font-size: 1rem;
+        font-size: 1.05rem;
         box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
     }
     .nav a {
@@ -35,10 +36,26 @@
         display: inline-block;
         font-weight: 600;
         transition: all 0.3s;
+        cursor: pointer;
     }
     .nav a.active {
         border-bottom: 3px solid #008080;
         color: #008080;
+    }
+
+    /* Theme Button */
+    .theme-button {
+        margin-left: 15px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border: 1px solid #008080;
+        border-radius: 5px;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+    .theme-button:hover {
+        background-color: #008080;
+        color: white;
     }
 
     /* Container */
@@ -53,38 +70,39 @@
     /* Left Side Photo & Info */
     .photo-container {
         flex: 1;
-        min-width: 200px;
-        max-width: 250px;
+        min-width: 220px;
+        max-width: 280px;
         text-align: center;
         margin-right: 40px;
     }
     .photo-container img {
-        width: 180px;
-        height: 180px;
+        width: 220px; /* larger size */
+        height: 220px;
         border-radius: 50%;
         border: 3px solid #008080;
         object-fit: cover;
         margin-bottom: 15px;
     }
     .photo-container h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         margin: 5px 0;
         font-weight: 700;
     }
     .photo-container p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         margin: 5px 0 10px 0;
         color: #555;
     }
     .photo-container .links a {
         margin: 0 8px;
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     /* Right Content */
     .content {
         flex: 3;
         min-width: 300px;
+        font-size: 1.1rem; /* larger text */
     }
 
     section {
@@ -100,7 +118,7 @@
         border-bottom: 1px solid #ddd;
         padding-bottom: 5px;
         margin-top: 30px;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     ul, ol {
@@ -108,7 +126,7 @@
     }
 
     p, li {
-        font-size: 1rem;
+        font-size: 1.15rem;
         margin-bottom: 12px;
     }
 
@@ -128,7 +146,7 @@
     }
 
     /* Small screens */
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         .container {
             flex-direction: column;
             align-items: center;
@@ -142,17 +160,44 @@
             width: 100%;
         }
     }
+
+    /* Dark theme */
+    body.dark {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+    }
+    body.dark a {
+        color: #4db6ac;
+    }
+    body.dark .nav {
+        background-color: #2a2a2a;
+        border-bottom: 2px solid #555;
+    }
+    body.dark .nav a.active {
+        color: #4db6ac;
+        border-bottom: 3px solid #4db6ac;
+    }
+    body.dark .theme-button {
+        border-color: #4db6ac;
+        color: #4db6ac;
+        background-color: #2a2a2a;
+    }
+    body.dark .theme-button:hover {
+        background-color: #4db6ac;
+        color: white;
+    }
 </style>
 </head>
 <body>
 
 <!-- Navigation Tabs -->
 <div class="nav">
-    <a href="#" class="tab-link active" data-tab="about">About Me</a>
-    <a href="#" class="tab-link" data-tab="publications">Publications</a>
-    <a href="#" class="tab-link" data-tab="ta">TA</a>
-    <a href="#" class="tab-link" data-tab="presentations">Presentations</a>
-    <a href="#" class="tab-link" data-tab="contact">Contact</a>
+    <a class="tab-link active" data-tab="about">About Me</a>
+    <a class="tab-link" data-tab="publications">Publications</a>
+    <a class="tab-link" data-tab="ta">TA</a>
+    <a class="tab-link" data-tab="presentations">Presentations</a>
+    <a class="tab-link" data-tab="contact">Contact</a>
+    <button class="theme-button" onclick="switchTheme()">Switch Theme</button>
 </div>
 
 <div class="container">
@@ -162,7 +207,7 @@
         <h1>Pinki Pradhan</h1>
         <p>PhD Student at NISER Bhubaneswar</p>
         <div class="links">
-            <a href="https://scholar.google.com/citations?user=CIhKC4oAAAAJ&hl=en">Google Scholar</a> |
+            <a href="https://scholar.google.com/citations?user=CIhKC4oAAAAJ&hl=en" target="_blank">Google Scholar</a> |
             <a href="https://dblp.org/" target="_blank">DBLP</a> 
         </div>
     </div>
@@ -182,28 +227,29 @@
             <table class="pub-table">
                 <tr>
                     <td>
-                        <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (2025, with Anup Bhattacharya)
+                        <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (2025, with Anup Bhattacharya)<br>
+                        Venue: CIAC 2025
                     </td>
                     <td>
-                        [<a href="ciac2025.pdf" target="_blank">PDF (Slides)</a>] | [<a href="https://arxiv.org/pdf/2502.15333" target="_blank">Paper Link</a>]
+                        [<a href="ciac2025.pdf" target="_blank">PDF (Slides)</a>] | 
+                        [<a href="https://arxiv.org/pdf/2502.15333" target="_blank">Paper Link</a>]
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (2025, with Anup Bhattacharya and Ragesh Jaiswal)
+                        <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (2025, with Anup Bhattacharya and Ragesh Jaiswal)<br>
+                        Venue: AISTATS 2026
                     </td>
                     <td>
-                        [<a href="AISTATS2026.pdf" target="_blank">PDF (Slides)</a>] | [<a href="https://arxiv.org/pdf/2602.18389" target="_blank">Paper Link</a>]
+                        [<a href="AISTATS2026.pdf" target="_blank">PDF (Slides)</a>] | 
+                        [<a href="https://arxiv.org/pdf/2602.18389" target="_blank">Paper Link</a>]
                     </td>
                 </tr>
-               
             </table>
         </section>
 
-       
-
         <!-- Teaching -->
-        <section id="Ta">
+        <section id="ta">
             <h2>Teaching Assistantship</h2>
             <ul>
                 <li>Spring 2025: Advanced Machine Learning (Instructor: Dr. Anup Bhattacharya)</li>
@@ -234,7 +280,7 @@
 </div>
 
 <script>
-    // JavaScript for tab navigation
+    // Tab navigation
     const tabs = document.querySelectorAll('.tab-link');
     const sections = document.querySelectorAll('section');
 
@@ -244,11 +290,24 @@
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             const target = tab.getAttribute('data-tab');
-            sections.forEach(sec => {
-                sec.classList.toggle('active', sec.id === target);
-            });
+            sections.forEach(sec => sec.classList.toggle('active', sec.id === target));
         });
     });
+
+    // Theme switcher
+    function switchTheme() {
+        const body = document.body;
+        if (!body.classList.contains('dark') && !body.dataset.theme) {
+            body.classList.add('dark');
+            body.dataset.theme = 'dark';
+        } else if (body.classList.contains('dark')) {
+            body.classList.remove('dark');
+            body.dataset.theme = 'light';
+        } else {
+            body.classList.remove('dark');
+            body.dataset.theme = '';
+        }
+    }
 </script>
 
 </body>
