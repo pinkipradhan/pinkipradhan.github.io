@@ -19,20 +19,26 @@
         color: #4db6ac;
     }
 
-    /* Header with Tabs */
+    /* Navigation Tabs */
     .nav {
         display: flex;
         justify-content: center;
         background-color: #1f1f1f;
-        border-bottom: 1px solid #333;
+        border-bottom: 2px solid #333;
+        font-size: 1rem;
     }
     .nav a {
         padding: 15px 25px;
         display: inline-block;
         font-weight: bold;
+        transition: all 0.3s;
     }
     .nav a.active {
         border-bottom: 3px solid #80cbc4;
+        color: #80cbc4;
+    }
+    .nav a:hover {
+        color: #4db6ac;
     }
 
     /* Container */
@@ -68,6 +74,7 @@
     section {
         display: none;
         margin-top: 20px;
+        font-size: 1rem;
     }
     section.active {
         display: block;
@@ -78,12 +85,30 @@
         border-bottom: 1px solid #333;
         padding-bottom: 5px;
         margin-top: 30px;
+        font-size: 1.3rem;
     }
 
     ul, ol {
         margin-left: 20px;
     }
 
+    /* Make text slightly lighter for readability */
+    p, li {
+        color: #d0d0d0;
+        line-height: 1.6;
+    }
+
+    /* Small screens */
+    @media (max-width: 800px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+        }
+        .photo {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
 </style>
 </head>
 <body>
@@ -117,10 +142,22 @@
         <section id="publications">
             <h2>Publications and Manuscripts</h2>
             <ol>
-                <li>2025: Improved Sublinear-time Moment Estimation Using Weighted Sampling (with Anup Bhattacharya) – Accepted at CIAC 2025</li>
-                <li>2025: Improved Algorithms for Clustering with Noisy Distance Oracles (with Anup Bhattacharya and Ragesh Jaiswal) – Accepted at AISTATS 2026</li>
-                <li>2026: Clustering in Bi-metric Framework (with Anup Bhattacharya and Ragesh Jaiswal) – Ongoing</li>
-                <li>2026: Instance-Optimal Sum Estimation (with Anup Bhattacharya and Suryendu Mandal) – Ongoing</li>
+                <li>
+                    2025: <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (with Anup Bhattacharya) – Accepted at CIAC 2025  
+                    [<a href="CIAC2025.pdf" target="_blank">PDF</a>]
+                </li>
+                <li>
+                    2025: <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (with Anup Bhattacharya and Ragesh Jaiswal) – Accepted at AISTATS 2026  
+                    [<a href="AISTATS2026.pdf" target="_blank">PDF</a>]
+                </li>
+                <li>
+                    2026: <strong>Clustering in Bi-metric Framework</strong> (with Anup Bhattacharya and Ragesh Jaiswal) – Ongoing  
+                    [<a href="Clustering_Bimetric.pdf" target="_blank">PDF</a>]
+                </li>
+                <li>
+                    2026: <strong>Instance-Optimal Sum Estimation</strong> (with Anup Bhattacharya and Suryendu Mandal) – Ongoing  
+                    [<a href="Sum_Estimation.pdf" target="_blank">PDF</a>]
+                </li>
             </ol>
         </section>
 
