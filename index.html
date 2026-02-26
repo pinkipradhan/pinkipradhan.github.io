@@ -8,14 +8,14 @@
     body {
         margin: 0;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        background-color: #fdfdfd;
-        color: #222;
+        background-color: #1e1e1e; /* Dark by default */
+        color: #e0e0e0; /* Light text for dark theme */
         line-height: 1.8;
         transition: background-color 0.3s, color 0.3s;
     }
 
     a {
-        color: #008080; /* Teal accent */
+        color: #4db6ac; /* Teal accent for dark theme */
         text-decoration: none;
     }
     a:hover {
@@ -26,10 +26,10 @@
     .nav {
         display: flex;
         justify-content: center;
-        background-color: #ffffff;
-        border-bottom: 2px solid #ddd;
+        background-color: #2a2a2a;
+        border-bottom: 2px solid #555;
         font-size: 1.05rem;
-        box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
     }
     .nav a {
         padding: 15px 25px;
@@ -39,8 +39,8 @@
         cursor: pointer;
     }
     .nav a.active {
-        border-bottom: 3px solid #008080;
-        color: #008080;
+        border-bottom: 3px solid #4db6ac;
+        color: #4db6ac;
     }
 
     /* Theme Button */
@@ -48,14 +48,15 @@
         margin-left: 15px;
         font-size: 0.9rem;
         padding: 8px 12px;
-        border: 1px solid #008080;
+        border: 1px solid #4db6ac;
         border-radius: 5px;
-        background-color: #ffffff;
+        background-color: #2a2a2a;
+        color: #4db6ac;
         cursor: pointer;
     }
     .theme-button:hover {
-        background-color: #008080;
-        color: white;
+        background-color: #4db6ac;
+        color: #1e1e1e;
     }
 
     /* Container */
@@ -76,10 +77,10 @@
         margin-right: 40px;
     }
     .photo-container img {
-        width: 220px; /* larger size */
+        width: 220px;
         height: 220px;
         border-radius: 50%;
-        border: 3px solid #008080;
+        border: 3px solid #4db6ac;
         object-fit: cover;
         margin-bottom: 15px;
     }
@@ -91,7 +92,7 @@
     .photo-container p {
         font-size: 1.1rem;
         margin: 5px 0 10px 0;
-        color: #555;
+        color: #cccccc;
     }
     .photo-container .links a {
         margin: 0 8px;
@@ -102,7 +103,7 @@
     .content {
         flex: 3;
         min-width: 300px;
-        font-size: 1.1rem; /* larger text */
+        font-size: 1.1rem;
     }
 
     section {
@@ -114,8 +115,8 @@
     }
 
     h2 {
-        color: #008080;
-        border-bottom: 1px solid #ddd;
+        color: #4db6ac;
+        border-bottom: 1px solid #555;
         padding-bottom: 5px;
         margin-top: 30px;
         font-size: 1.5rem;
@@ -142,7 +143,7 @@
     }
     .pub-table a {
         font-weight: bold;
-        color: #008080;
+        color: #4db6ac;
     }
 
     /* Small screens */
@@ -161,29 +162,29 @@
         }
     }
 
-    /* Dark theme */
-    body.dark {
-        background-color: #1e1e1e;
-        color: #e0e0e0;
+    /* Light theme */
+    body.light {
+        background-color: #fdfdfd;
+        color: #222;
     }
-    body.dark a {
-        color: #4db6ac;
+    body.light a {
+        color: #008080;
     }
-    body.dark .nav {
-        background-color: #2a2a2a;
-        border-bottom: 2px solid #555;
+    body.light .nav {
+        background-color: #ffffff;
+        border-bottom: 2px solid #ddd;
     }
-    body.dark .nav a.active {
-        color: #4db6ac;
-        border-bottom: 3px solid #4db6ac;
+    body.light .nav a.active {
+        color: #008080;
+        border-bottom: 3px solid #008080;
     }
-    body.dark .theme-button {
-        border-color: #4db6ac;
-        color: #4db6ac;
-        background-color: #2a2a2a;
+    body.light .theme-button {
+        border-color: #008080;
+        color: #008080;
+        background-color: #ffffff;
     }
-    body.dark .theme-button:hover {
-        background-color: #4db6ac;
+    body.light .theme-button:hover {
+        background-color: #008080;
         color: white;
     }
 </style>
@@ -294,18 +295,18 @@
         });
     });
 
-    // Theme switcher
+    // Theme switcher: cycles Light / Dark / Auto
     function switchTheme() {
         const body = document.body;
-        if (!body.classList.contains('dark') && !body.dataset.theme) {
+        if (!body.classList.contains('dark') && !body.classList.contains('light')) {
+            body.classList.remove('light');
+            body.classList.add('light');
+        } else if (body.classList.contains('light')) {
+            body.classList.remove('light');
             body.classList.add('dark');
-            body.dataset.theme = 'dark';
-        } else if (body.classList.contains('dark')) {
-            body.classList.remove('dark');
-            body.dataset.theme = 'light';
         } else {
             body.classList.remove('dark');
-            body.dataset.theme = '';
+            body.classList.remove('light');
         }
     }
 </script>
