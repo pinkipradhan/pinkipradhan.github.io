@@ -8,13 +8,13 @@
     body {
         margin: 0;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        background-color: #f9f9f9;
+        background-color: #fdfdfd;
         color: #222222;
-        line-height: 1.7;
+        line-height: 1.8;
     }
 
     a {
-        color: #1a73e8;
+        color: #008080; /* Teal accent */
         text-decoration: none;
     }
     a:hover {
@@ -37,8 +37,8 @@
         transition: all 0.3s;
     }
     .nav a.active {
-        border-bottom: 3px solid #1a73e8;
-        color: #1a73e8;
+        border-bottom: 3px solid #008080;
+        color: #008080;
     }
 
     /* Container */
@@ -62,7 +62,7 @@
         width: 180px;
         height: 180px;
         border-radius: 50%;
-        border: 3px solid #1a73e8;
+        border: 3px solid #008080;
         object-fit: cover;
         margin-bottom: 15px;
     }
@@ -96,7 +96,7 @@
     }
 
     h2 {
-        color: #1a73e8;
+        color: #008080;
         border-bottom: 1px solid #ddd;
         padding-bottom: 5px;
         margin-top: 30px;
@@ -109,7 +109,22 @@
 
     p, li {
         font-size: 1rem;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+    }
+
+    /* Publications table */
+    .pub-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    .pub-table td {
+        padding: 8px 12px;
+        vertical-align: top;
+    }
+    .pub-table a {
+        font-weight: bold;
+        color: #008080;
     }
 
     /* Small screens */
@@ -121,6 +136,10 @@
         .photo-container {
             margin-right: 0;
             margin-bottom: 25px;
+        }
+        .pub-table td {
+            display: block;
+            width: 100%;
         }
     }
 </style>
@@ -162,24 +181,40 @@
         <!-- Publications -->
         <section id="publications">
             <h2>Publications and Manuscripts</h2>
-            <ol>
-                <li>
-                    2025: <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (with Anup Bhattacharya) – Accepted at CIAC 2025  
-                    [<a href="CIAC2025.pdf" target="_blank">PDF</a>]
-                </li>
-                <li>
-                    2025: <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (with Anup Bhattacharya and Ragesh Jaiswal) – Accepted at AISTATS 2026  
-                    [<a href="AISTATS2026.pdf" target="_blank">PDF</a>]
-                </li>
-                <li>
-                    2026: <strong>Clustering in Bi-metric Framework</strong> (with Anup Bhattacharya and Ragesh Jaiswal) – Ongoing  
-                    [<a href="Clustering_Bimetric.pdf" target="_blank">PDF</a>]
-                </li>
-                <li>
-                    2026: <strong>Instance-Optimal Sum Estimation</strong> (with Anup Bhattacharya and Suryendu Mandal) – Ongoing  
-                    [<a href="Sum_Estimation.pdf" target="_blank">PDF</a>]
-                </li>
-            </ol>
+            <table class="pub-table">
+                <tr>
+                    <td>
+                        <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (2025, with Anup Bhattacharya)
+                    </td>
+                    <td>
+                        [<a href="CIAC2025.pdf" target="_blank">PDF (Slides)</a>] | [<a href="https://example.com" target="_blank">Paper Link</a>]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (2025, with Anup Bhattacharya and Ragesh Jaiswal)
+                    </td>
+                    <td>
+                        [<a href="AISTATS2026.pdf" target="_blank">PDF (Slides)</a>] | [<a href="https://example.com" target="_blank">Paper Link</a>]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Clustering in Bi-metric Framework</strong> (2026, with Anup Bhattacharya and Ragesh Jaiswal)
+                    </td>
+                    <td>
+                        [<a href="Clustering_Bimetric.pdf" target="_blank">PDF (Slides)</a>] | [<a href="https://example.com" target="_blank">Paper Link</a>]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Instance-Optimal Sum Estimation</strong> (2026, with Anup Bhattacharya and Suryendu Mandal)
+                    </td>
+                    <td>
+                        [<a href="Sum_Estimation.pdf" target="_blank">PDF (Slides)</a>] | [<a href="https://example.com" target="_blank">Paper Link</a>]
+                    </td>
+                </tr>
+            </table>
         </section>
 
         <!-- Projects -->
@@ -235,168 +270,6 @@
             const target = tab.getAttribute('data-tab');
             sections.forEach(sec => {
                 sec.classList.toggle('active', sec.id === target);
-            });
-        });
-    });
-</script>
-
-</body>
-</html>
-    /* Right Content */
-    .content {
-        flex: 3;
-        min-width: 300px;
-    }
-
-    /* Section */
-    section {
-        display: none;
-        margin-top: 20px;
-        font-size: 1rem;
-    }
-    section.active {
-        display: block;
-    }
-
-    h2 {
-        color: #80cbc4;
-        border-bottom: 1px solid #333;
-        padding-bottom: 5px;
-        margin-top: 30px;
-        font-size: 1.3rem;
-    }
-
-    ul, ol {
-        margin-left: 20px;
-    }
-
-    /* Make text slightly lighter for readability */
-    p, li {
-        color: #d0d0d0;
-        line-height: 1.6;
-    }
-
-    /* Small screens */
-    @media (max-width: 800px) {
-        .container {
-            flex-direction: column;
-            align-items: center;
-        }
-        .photo {
-            margin-right: 0;
-            margin-bottom: 20px;
-        }
-    }
-</style>
-</head>
-<body>
-
-<!-- Navigation Tabs -->
-<div class="nav">
-    <a href="#" class="tab-link active" data-tab="about">About Me</a>
-    <a href="#" class="tab-link" data-tab="publications">Publications</a>
-    <a href="#" class="tab-link" data-tab="projects">Projects</a>
-    <a href="#" class="tab-link" data-tab="teaching">Teaching</a>
-    <a href="#" class="tab-link" data-tab="presentations">Presentations</a>
-    <a href="#" class="tab-link" data-tab="contact">Contact</a>
-</div>
-
-<div class="container">
-    <!-- Left Side Photo -->
-    <div class="photo">
-        <img src="photo.jpg" alt="Pinki Pradhan">
-    </div>
-
-    <!-- Right Side Content -->
-    <div class="content">
-        <!-- About Me -->
-        <section id="about" class="active">
-            <p>
-            I am currently pursuing a PhD in <strong>Theoretical Computer Science</strong> at NISER Bhubaneswar, under the supervision of <a href="https://sites.google.com/site/anupbtcs" target="_blank">Dr. Anup Bhattacharya</a>. My research broadly focuses on the design and analysis of algorithms, with particular emphasis on <strong>Randomized Algorithms</strong>, <strong>Sublinear Algorithms</strong> and <strong>Beyond-worst case analysis of Algorithms</strong>. I also enjoy thinking about <strong>Clustering</strong> problems under limited or noisy information, including adversarial settings, and the <strong>beyond worst-case analysis</strong> of clustering problems.
-            </p>
-        </section>
-
-        <!-- Publications -->
-        <section id="publications">
-            <h2>Publications and Manuscripts</h2>
-            <ol>
-                <li>
-                    2025: <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (with Anup Bhattacharya) – Accepted at CIAC 2025  
-                    [<a href="CIAC2025.pdf" target="_blank">PDF</a>]
-                </li>
-                <li>
-                    2025: <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (with Anup Bhattacharya and Ragesh Jaiswal) – Accepted at AISTATS 2026  
-                    [<a href="AISTATS2026.pdf" target="_blank">PDF</a>]
-                </li>
-                <li>
-                    2026: <strong>Clustering in Bi-metric Framework</strong> (with Anup Bhattacharya and Ragesh Jaiswal) – Ongoing  
-                    [<a href="Clustering_Bimetric.pdf" target="_blank">PDF</a>]
-                </li>
-                <li>
-                    2026: <strong>Instance-Optimal Sum Estimation</strong> (with Anup Bhattacharya and Suryendu Mandal) – Ongoing  
-                    [<a href="Sum_Estimation.pdf" target="_blank">PDF</a>]
-                </li>
-            </ol>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li>Project Name – Brief description (replace with your projects)</li>
-            </ul>
-        </section>
-
-        <!-- Teaching -->
-        <section id="teaching">
-            <h2>Teaching Assistantship</h2>
-            <ul>
-                <li>Spring 2025: Advanced Machine Learning (Instructor: Dr. Anup Bhattacharya)</li>
-                <li>Autumn 2024: Randomized Algorithms (Instructor: Dr. Anup Bhattacharya)</li>
-                <li>Fall 2023: Algorithms (Instructors: Dr. Anup Bhattacharya and Dr. Abhishek Sahu)</li>
-                <li>Autumn 2022: Algorithms (Instructor: Dr. Anup Bhattacharya)</li>
-                <li>Spring 2022: Programming and Data Structures Lab (Instructor: Dr. Anup Bhattacharya)</li>
-                <li>Autumn 2021: Computational Laboratory (Instructor: Dr. Anup Bhattacharya)</li>
-            </ul>
-        </section>
-
-        <!-- Presentations -->
-        <section id="presentations">
-            <h2>Conference and Workshop Presentations</h2>
-            <ul>
-                <li>May 2025: Poster Presentation at GALP Workshop, ICTS, Bangalore</li>
-                <li>June 2025: Oral Presentation at CIAC 2025, Rome, Italy</li>
-                <li>May 2026: Scheduled Oral Presentation at AISTATS 2026, Tangier, Morocco</li>
-            </ul>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:pinki.pradhan@niser.ac.in">pinki.pradhan@niser.ac.in</a><br>
-            Office: Room 303, School of Mathematical Sciences, NISER Bhubaneswar, Odisha, India</p>
-        </section>
-
-    </div>
-</div>
-
-<script>
-    // JavaScript for tab navigation
-    const tabs = document.querySelectorAll('.tab-link');
-    const sections = document.querySelectorAll('section');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', e => {
-            e.preventDefault();
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            const target = tab.getAttribute('data-tab');
-            sections.forEach(sec => {
-                if(sec.id === target){
-                    sec.classList.add('active');
-                } else {
-                    sec.classList.remove('active');
-                }
             });
         });
     });
