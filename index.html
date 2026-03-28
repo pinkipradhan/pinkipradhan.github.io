@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- ✅ SEO additions (safe, no layout impact) -->
+<!-- ✅ SEO (no layout impact) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Pinki Pradhan, PhD student at NISER Bhubaneswar working in Theoretical Computer Science, Randomized Algorithms, and Sublinear Algorithms.">
 <meta name="keywords" content="Pinki Pradhan, NISER Bhubaneswar, PhD, Theoretical Computer Science, Randomized Algorithms, Sublinear Algorithms">
 <meta name="author" content="Pinki Pradhan">
 <meta name="robots" content="index, follow">
 
-<!-- ✅ Slightly improved title -->
 <title>Pinki Pradhan - PhD Scholar | NISER Bhubaneswar</title>
 
 <style>
@@ -202,7 +201,7 @@ body.light .theme-button:hover {
 
 <body>
 
-<!-- ✅ Invisible SEO text (does NOT affect layout) -->
+<!-- ✅ Invisible SEO text (no visual effect) -->
 <div style="display:none;">
 Pinki Pradhan PhD NISER Bhubaneswar Theoretical Computer Science Randomized Algorithms Sublinear Algorithms India Research Publications
 </div>
@@ -219,7 +218,7 @@ Pinki Pradhan PhD NISER Bhubaneswar Theoretical Computer Science Randomized Algo
 
 <div class="container">
     <div class="photo-container">
-        <!-- ✅ Only alt improved -->
+        <!-- ✅ only alt improved -->
         <img src="mypic4.jpg" alt="Pinki Pradhan PhD Student NISER Bhubaneswar">
         <h1>Pinki Pradhan</h1>
         <p>PhD Student at NISER Bhubaneswar</p>
@@ -238,4 +237,82 @@ Pinki Pradhan PhD NISER Bhubaneswar Theoretical Computer Science Randomized Algo
         </p>
       </section>
 
-        <!-- rest EXACT same -->
+        <section id="publications">
+            <h2>Publications and Manuscripts</h2>
+            <table class="pub-table">
+                <tr>
+                    <td>
+                        <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (2025, with Anup Bhattacharya)<br>
+                        Venue: CIAC 2025
+                    </td>
+                    <td>
+                        [<a href="ciac2025.pdf" target="_blank">PDF (Slides)</a>] | 
+                        [<a href="https://arxiv.org/pdf/2502.15333" target="_blank">Paper Link</a>]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (2025, with Anup Bhattacharya and Ragesh Jaiswal)<br>
+                        Venue: AISTATS 2026
+                    </td>
+                    <td>
+                        [<a href="AISTATS2026.pdf" target="_blank">PDF (Slides)</a>] | 
+                        [<a href="https://arxiv.org/pdf/2602.18389" target="_blank">Paper Link</a>]
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="ta">
+            <h2>Teaching Assistantship</h2>
+            <ul>
+                <li>Spring 2025: Advanced Machine Learning</li>
+                <li>Autumn 2024: Randomized Algorithms</li>
+                <li>Fall 2023: Algorithms</li>
+            </ul>
+        </section>
+
+        <section id="presentations">
+            <h2>Conference and Workshop Presentations</h2>
+            <ul>
+                <li>May 2025: Poster Presentation at GALP Workshop</li>
+                <li>June 2025: Oral Presentation at CIAC 2025</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:pinki.pradhan@niser.ac.in">pinki.pradhan@niser.ac.in</a></p>
+        </section>
+    </div>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab-link');
+const sections = document.querySelectorAll('section');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+        e.preventDefault();
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.getAttribute('data-tab');
+        sections.forEach(sec => sec.classList.toggle('active', sec.id === target));
+    });
+});
+
+function switchTheme() {
+    const body = document.body;
+    if (!body.classList.contains('dark') && !body.classList.contains('light')) {
+        body.classList.add('light');
+    } else if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+    } else {
+        body.classList.remove('dark');
+    }
+}
+</script>
+
+</body>
+</html>
