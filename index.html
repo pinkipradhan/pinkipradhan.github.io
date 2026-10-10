@@ -1,330 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pinki Pradhan, PhD student in Theoretical Computer Science at NISER Bhubaneswar.">
+  <title>Pinki Pradhan</title>
 
-<!-- ✅ SEO (no layout impact) -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Pinki Pradhan, PhD student at NISER Bhubaneswar working in Theoretical Computer Science, Randomized Algorithms, and Sublinear Algorithms.">
-<meta name="keywords" content="Pinki Pradhan, NISER Bhubaneswar, PhD, Theoretical Computer Science, Randomized Algorithms, Sublinear Algorithms">
-<meta name="author" content="Pinki Pradhan">
-<meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --bg-sidebar: #f4f8fb;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --accent-blue: #0b4f8a;
+      --accent-blue-hover: #07355d;
+      --border-light: #e5e9ee;
+      --badge-bg: #f0f4f8;
+      --badge-border: #0b4f8a;
+    }
 
-<title>Pinki Pradhan</title>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
-/* General Styles */
-body {
-    margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-    line-height: 1.8;
-    transition: background-color 0.3s, color 0.3s;
-}
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+    }
 
-a {
-    color: #4db6ac;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
+    /* Left Sidebar */
+    .sidebar {
+      width: 320px;
+      min-width: 280px;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-light);
+      padding: 60px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex-shrink: 0;
+    }
 
-/* Navigation Tabs */
-.nav {
-    display: flex;
-    justify-content: center;
-    background-color: #2a2a2a;
-    border-bottom: 2px solid #555;
-    font-size: 1.05rem;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
-}
-.nav a {
-    padding: 15px 25px;
-    display: inline-block;
-    font-weight: 600;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-.nav a.active {
-    border-bottom: 3px solid #4db6ac;
-    color: #4db6ac;
-}
+    .photo-card {
+      width: 170px;
+      height: 190px;
+      background-color: #e2eaf1;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #374151;
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      border: 1px solid #d0dbe5;
+      overflow: hidden;
+    }
 
-/* Theme Button */
-.theme-button {
-    margin-left: 15px;
-    font-size: 0.9rem;
-    padding: 8px 12px;
-    border: 1px solid #4db6ac;
-    border-radius: 5px;
-    background-color: #2a2a2a;
-    color: #4db6ac;
-    cursor: pointer;
-}
-.theme-button:hover {
-    background-color: #4db6ac;
-    color: #1e1e1e;
-}
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* Container */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
+    .sidebar h1.name {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #0b2540;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
 
-/* Left Side Photo & Info */
-.photo-container {
-    flex: 1;
-    min-width: 220px;
-    max-width: 280px;
-    text-align: center;
-    margin-right: 40px;
-}
-.photo-container img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 3px solid #4db6ac;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-.photo-container h1 {
-    font-size: 1.6rem;
-    margin: 5px 0;
-    font-weight: 700;
-}
-.photo-container p {
-    font-size: 1.1rem;
-    margin: 5px 0 10px 0;
-    color: #cccccc;
-}
-.photo-container .links a {
-    margin: 0 8px;
-    font-size: 1rem;
-}
+    .sidebar .role {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
 
-/* Right Content */
-.content {
-    flex: 3;
-    min-width: 300px;
-    font-size: 1.1rem;
-}
+    .sidebar-divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--border-light);
+      margin-bottom: 20px;
+    }
 
-section {
-    display: none;
-    margin-top: 25px;
-}
-section.active {
-    display: block;
-}
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      width: 100%;
+      padding-left: 10px;
+    }
 
-h2 {
-    color: #4db6ac;
-    border-bottom: 1px solid #555;
-    padding-bottom: 5px;
-    margin-top: 30px;
-    font-size: 1.5rem;
-}
+    .sidebar-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 1.02rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
 
-ul, ol {
-    margin-left: 20px;
-}
+    .sidebar-links a:hover {
+      color: var(--accent-blue-hover);
+      text-decoration: underline;
+    }
 
-p, li {
-    font-size: 1.15rem;
-    margin-bottom: 12px;
-}
+    .sidebar-links svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
 
-/* Publications table */
-.pub-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-.pub-table td {
-    padding: 8px 12px;
-    vertical-align: top;
-}
-.pub-table a {
-    font-weight: bold;
-    color: #4db6ac;
-}
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 30px 60px 80px 60px;
+      max-width: 950px;
+    }
 
-/* Small screens */
-@media (max-width: 900px) {
-    .container {
+    /* Top Navigation */
+    nav.top-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 24px;
+      margin-bottom: 40px;
+      font-size: 1.02rem;
+      font-family: var(--font-sans);
+    }
+
+    nav.top-nav a {
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    nav.top-nav a:hover {
+      color: var(--accent-blue);
+    }
+
+    /* Content Typography */
+    h2.section-heading {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.8rem;
+      color: #0c2340;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .about-section p {
+      font-size: 1.05rem;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .publications-heading {
+      border-bottom: 1.5px solid var(--border-light);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+      margin-top: 20px;
+    }
+
+    /* Publications List */
+    .pub-item {
+      margin-bottom: 30px;
+    }
+
+    .pub-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0c2340;
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+
+    .pub-authors {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .pub-authors strong {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .pub-meta-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* Badges */
+    .pub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 10px;
+      border: 1px solid #0b4f8a;
+      border-radius: 4px;
+      color: #0b4f8a;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      background-color: #f7fafd;
+      transition: all 0.15s ease;
+    }
+
+    .pub-badge:hover {
+      background-color: #0b4f8a;
+      color: #ffffff;
+    }
+
+    /* Responsive for Tablets / Mobile */
+    @media (max-width: 860px) {
+      body {
         flex-direction: column;
-        align-items: center;
-    }
-    .photo-container {
-        margin-right: 0;
-        margin-bottom: 25px;
-    }
-    .pub-table td {
-        display: block;
+      }
+      .sidebar {
         width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 40px 20px;
+      }
+      .sidebar-links {
+        align-items: center;
+        padding-left: 0;
+      }
+      .main-content {
+        padding: 30px 20px 60px 20px;
+      }
+      nav.top-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
     }
-}
-
-/* Light theme */
-body.light {
-    background-color: #fdfdfd;
-    color: #222;
-}
-body.light a {
-    color: #008080;
-}
-body.light .nav {
-    background-color: #ffffff;
-    border-bottom: 2px solid #ddd;
-}
-body.light .nav a.active {
-    color: #008080;
-    border-bottom: 3px solid #008080;
-}
-body.light .theme-button {
-    border-color: #008080;
-    color: #008080;
-    background-color: #ffffff;
-}
-body.light .theme-button:hover {
-    background-color: #008080;
-    color: white;
-}
-</style>
+  </style>
 </head>
-
 <body>
 
-<!-- ✅ Invisible SEO text (no visual effect) -->
-<div style="display:none;">
-Pinki Pradhan PhD NISER Bhubaneswar Theoretical Computer Science Randomized Algorithms Sublinear Algorithms India Research Publications
-</div>
+  <!-- Left Sidebar -->
+  <aside class="sidebar">
+    <div class="photo-card">
+      <!-- To use your real picture, replace below with: <img src="mypic4.jpg" alt="Pinki Pradhan"> -->
+      <span>Photo</span>
+    </div>
+    
+    <h1 class="name">Pinki Pradhan</h1>
+    <div class="role">PhD Student in TCS · NISER<br>Bhubaneswar</div>
+    
+    <div class="sidebar-divider"></div>
 
-<!-- Navigation Tabs -->
-<div class="nav">
-    <a class="tab-link active" data-tab="about">About Me</a>
-    <a class="tab-link" data-tab="publications">Publications</a>
-    <a class="tab-link" data-tab="ta">TA</a>
-    <a class="tab-link" data-tab="presentations">Presentations</a>
-    <a class="tab-link" data-tab="contact">Contact</a>
-    <button class="theme-button" onclick="switchTheme()">Switch Theme</button>
-</div>
+    <div class="sidebar-links">
+      <a href="https://scholar.google.com/citations?user=CIhKC4oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+        Google Scholar
+      </a>
+      <a href="https://dblp.org/pid/400/7273.html" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M4.5 3A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h7.05a6.5 6.5 0 0 1-.05-.8v-6.4a6.5 6.5 0 0 1 6.5-6.5h3V4.5A1.5 1.5 0 0 0 19.5 3h-15zm13 8a4.5 4.5 0 0 0-4.5 4.5v4.5H21v-4.5a4.5 4.5 0 0 0-4.5-4.5z"/></svg>
+        DBLP
+      </a>
+    </div>
+  </aside>
 
-<div class="container">
-    <div class="photo-container">
-        <!-- ✅ only alt improved -->
-        <img src="mypic4.jpg" alt="Pinki Pradhan PhD Student NISER Bhubaneswar">
-        <h1>Pinki Pradhan</h1>
-        <p>PhD Student at NISER Bhubaneswar</p>
-        <div class="links">
-            <a href="https://scholar.google.com/citations?user=CIhKC4oAAAAJ&hl=en" target="_blank">Google Scholar</a> |
-            <a href="https://dblp.org/pid/400/7273.html" target="_blank">DBLP</a> 
+  <!-- Right Main Content -->
+  <main class="main-content">
+    
+    <!-- Top Nav -->
+    <nav class="top-nav">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#talks">Talks</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <h2 class="section-heading">About Me</h2>
+      <p>
+        I am a PhD student in theoretical computer science at NISER Bhubaneswar, advised by 
+        Dr. Anup Bhattacharya. My research focuses on randomized and sublinear algorithms, 
+        particularly sampling and estimation. I also study clustering with limited or noisy distance 
+        information.
+      </p>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="publications-section" id="publications">
+      <h2 class="section-heading publications-heading">Publications and manuscripts</h2>
+
+      <!-- Paper 1 -->
+      <article class="pub-item">
+        <div class="pub-title">
+          Almost Instance Optimal Sum and Moment Estimation Using Weighted Sampling
         </div>
-    </div>
+        <div class="pub-authors">
+          Anup Bhattacharya, Suryendu Mondal, and <strong>Pinki Pradhan</strong>
+        </div>
+        <div class="pub-meta-line">
+          <span>2026 · Manuscript</span>
+          <a class="pub-badge" href="https://arxiv.org/pdf/2610.08134" target="_blank">📄 Paper</a>
+          <a class="pub-badge" href="https://arxiv.org/abs/2610.08134" target="_blank">arXiv</a>
+        </div>
+      </article>
 
-    <div class="content">
-        <section id="about" class="active">
-          <p style="font-size: 1.2rem; line-height: 1.9; max-width: 800px;">
-        I am a PhD student in <strong>Theoretical Computer Science</strong> at <strong>NISER Bhubaneswar</strong>, working under the supervision of <a href="https://sites.google.com/site/anupbtcs" target="_blank"> Dr. Anup Bhattacharya </a>. 
-        My research focuses on the design and analysis of algorithms, particularly  <strong>Randomized Algorithms</strong> and <strong>Sublinear Algorithms</strong>. 
-        I am also interested in <strong>clustering problems</strong> under limited or noisy information, including adversarial settings.
-        </p>
-      </section>
+      <!-- Paper 2 -->
+      <article class="pub-item">
+        <div class="pub-title">
+          Improved Algorithms for Clustering with Noisy Distance Oracles
+        </div>
+        <div class="pub-authors">
+          Anup Bhattacharya, Rajesh Jaiswal, and <strong>Pinki Pradhan</strong>
+        </div>
+        <div class="pub-meta-line">
+          <span>AISTATS 2026</span>
+          <a class="pub-badge" href="https://arxiv.org/pdf/2602.18389" target="_blank">📄 Paper</a>
+          <a class="pub-badge" href="https://arxiv.org/abs/2602.18389" target="_blank">arXiv</a>
+          <a class="pub-badge" href="AISTATS2026.pdf" target="_blank">↗ Slides</a>
+          <a class="pub-badge" href="#" target="_blank">💻 Code</a>
+        </div>
+      </article>
 
-        <section id="publications">
-            <h2>Publications and Manuscripts</h2>
-            <table class="pub-table">
-                <tr>
-                    <td>
-                        <strong>Improved Sublinear-time Moment Estimation Using Weighted Sampling</strong> (2025, with Anup Bhattacharya)<br>
-                        Venue: CIAC 2025
-                    </td>
-                    <td>
-                        [<a href="ciac2025.pdf" target="_blank">PDF (Slides)</a>] | 
-                        [<a href="https://arxiv.org/pdf/2502.15333" target="_blank">Paper Link</a>]
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Improved Algorithms for Clustering with Noisy Distance Oracles</strong> (2025, with Anup Bhattacharya and Ragesh Jaiswal)<br>
-                        Venue: AISTATS 2026
-                    </td>
-                    <td>
-                        [<a href="AISTATS2026.pdf" target="_blank">PDF (Slides)</a>] | 
-                        [<a href="https://arxiv.org/pdf/2602.18389" target="_blank">Paper Link</a>]
-                    </td>
-                </tr>
+      <!-- Paper 3 -->
+      <article class="pub-item">
+        <div class="pub-title">
+          Improved Sublinear-time Moment Estimation Using Weighted Sampling
+        </div>
+        <div class="pub-authors">
+          Anup Bhattacharya and <strong>Pinki Pradhan</strong>
+        </div>
+        <div class="pub-meta-line">
+          <span>CIAC 2025</span>
+          <a class="pub-badge" href="https://arxiv.org/pdf/2502.15333" target="_blank">📄 Paper</a>
+          <a class="pub-badge" href="https://arxiv.org/abs/2502.15333" target="_blank">arXiv</a>
+          <a class="pub-badge" href="ciac2025.pdf" target="_blank">↗ Slides</a>
+        </div>
+      </article>
 
-               <tr>
-                  <td>
-                     <strong>Almost Instance Optimal Sum and Moment Estimation Using Weighted Sampling</strong> (2026, with Anup Bhattacharya and Suryendu Mondal)<br>
-                        Venue: Under Submission
-                  </td>
-                  <td>
-                      [<a href="AISTATS2026.pdf" target="_blank">PDF (Slides)</a>] | 
-                      [<a href="https://arxiv.org/pdf/2610.08134" target="_blank">Paper Link</a>]
-                 </td>
-            </tr>
-            </table>
-        </section>
+    </section>
 
-        <section id="ta">
-            <h2>Teaching Assistantship</h2>
-            <ul>
-                <li>Spring 2025: Advanced Machine Learning</li>
-                <li>Autumn 2024: Randomized Algorithms</li>
-                <li>Fall 2023: Algorithms</li>
-            </ul>
-        </section>
-
-        <section id="presentations">
-            <h2>Conference and Workshop Presentations</h2>
-            <ul>
-                <li>May 2025: Poster Presentation at GALP Workshop, ICTS Bangalore, India</li>
-                <li>June 2025: Oral Presentation at CIAC 2025, Rome, Italy</li>
-                <li>May 2026: Poster Presentation at AISTATS 2026, Tangier, Morocco</li>
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:pinki.pradhan@niser.ac.in">pinki.pradhan@niser.ac.in</a></p>
-        </section>
-    </div>
-</div>
-
-<script>
-const tabs = document.querySelectorAll('.tab-link');
-const sections = document.querySelectorAll('section');
-
-tabs.forEach(tab => {
-    tab.addEventListener('click', e => {
-        e.preventDefault();
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const target = tab.getAttribute('data-tab');
-        sections.forEach(sec => sec.classList.toggle('active', sec.id === target));
-    });
-});
-
-function switchTheme() {
-    const body = document.body;
-    if (!body.classList.contains('dark') && !body.classList.contains('light')) {
-        body.classList.add('light');
-    } else if (body.classList.contains('light')) {
-        body.classList.remove('light');
-        body.classList.add('dark');
-    } else {
-        body.classList.remove('dark');
-    }
-}
-</script>
+  </main>
 
 </body>
 </html>
