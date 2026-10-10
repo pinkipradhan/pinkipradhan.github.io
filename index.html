@@ -3,362 +3,693 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pinki Pradhan, PhD student in Theoretical Computer Science at NISER Bhubaneswar.">
+  <meta name="description" content="Pinki Pradhan, PhD student at NISER Bhubaneswar working in theoretical computer science, randomized algorithms, and sublinear algorithms.">
   <title>Pinki Pradhan</title>
 
   <style>
     :root {
-      --bg-page: #ffffff;
-      --bg-sidebar: #f4f8fb;
-      --text-main: #111827;
-      --text-muted: #4b5563;
-      --accent-blue: #0b4f8a;
-      --accent-blue-hover: #07355d;
-      --border-light: #e5e9ee;
-      --badge-bg: #f0f4f8;
-      --badge-border: #0b4f8a;
+      --background: #FAF8F2;
+      --text: #252525;
+      --teal: #087F8C;
+      --hover: #05616B;
+      --line: #DDD7CB;
+      --venue: #514B43;
+      --photo-background: #E9E3D7;
+      --tint: #087F8C15;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background-color: var(--bg-page);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      line-height: 1.4;
     }
 
-    /* Left Sidebar */
-    .sidebar {
-      width: 320px;
-      min-width: 280px;
-      background-color: var(--bg-sidebar);
-      border-right: 1px solid var(--border-light);
-      padding: 60px 36px;
+    body.dark {
+      --background: #181E22;
+      --text: #E6E9E8;
+      --teal: #55C5C5;
+      --hover: #8EDDDD;
+      --line: #465157;
+      --venue: #CDD5D8;
+      --photo-background: #303B40;
+      --tint: #55C5C51A;
+      color-scheme: dark;
+    }
+
+    a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--hover);
+      text-decoration: underline;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 4px;
+    }
+
+    .nav {
+      width: calc(100% - 120px);
+      max-width: 1800px;
+      margin: 0 auto;
+      padding-top: 24px;
       display: flex;
-      flex-direction: column;
+      justify-content: flex-end;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      font-size: 25px;
+    }
+
+    .theme-toggle {
+      padding: 5px 12px;
+      border: 1px solid var(--teal);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--teal);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      background: var(--tint);
+    }
+
+    .container {
+      width: calc(100% - 120px);
+      max-width: 1800px;
+      margin: 62px auto 0;
+    }
+
+    /* Photo and profile on the left; About Me on the right. */
+    .intro-row {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile {
       text-align: center;
-      flex-shrink: 0;
+      padding-right: 20px;
+      border-right: 1px solid var(--line);
     }
 
-    .photo-card {
-      width: 170px;
-      height: 190px;
-      background-color: #e2eaf1;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #374151;
-      font-size: 1.05rem;
-      margin-bottom: 24px;
-      border: 1px solid #d0dbe5;
+    .portrait {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto 14px;
+      border: 3px solid var(--teal);
+      border-radius: 50%;
+      background: var(--photo-background);
+      display: grid;
+      place-items: center;
       overflow: hidden;
     }
 
-    .photo-card img {
+    .portrait img {
+      grid-area: 1 / 1;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .sidebar h1.name {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: #0b2540;
-      line-height: 1.2;
-      margin-bottom: 8px;
+    .portrait .placeholder {
+      grid-area: 1 / 1;
+      font-size: 26px;
     }
 
-    .sidebar .role {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      line-height: 1.4;
+    .profile p {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.45;
     }
 
-    .sidebar-divider {
-      width: 100%;
-      height: 1px;
-      background-color: var(--border-light);
-      margin-bottom: 20px;
-    }
-
-    .sidebar-links {
+    .profile-links {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
-      width: 100%;
-      padding-left: 10px;
-    }
-
-    .sidebar-links a {
-      display: inline-flex;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
-      color: var(--accent-blue);
-      text-decoration: none;
-      font-size: 1.02rem;
-      font-weight: 500;
-      transition: color 0.15s ease;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+      font-size: 20px;
     }
 
-    .sidebar-links a:hover {
-      color: var(--accent-blue-hover);
-      text-decoration: underline;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
 
-    .sidebar-links svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
+    section {
+      margin-bottom: 42px;
+      scroll-margin-top: 30px;
     }
 
-    /* Main Content */
-    .main-content {
-      flex: 1;
-      padding: 30px 60px 80px 60px;
-      max-width: 950px;
+    h2 {
+      margin: 0;
+      padding-bottom: 7px;
+      border-bottom: 2px solid var(--line);
+      color: var(--teal);
+      font-size: 44px;
+      font-weight: 400;
+      line-height: 1.2;
     }
 
-    /* Top Navigation */
-    nav.top-nav {
+    #about {
+      min-width: 0;
+      margin: 0;
+    }
+
+    #about h2 {
+      margin-bottom: 8px;
+      padding: 0;
+      border: 0;
+      font-size: 35px;
+    }
+
+    #about p {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.55;
+    }
+
+    .content {
+      min-width: 0;
+      padding-bottom: 65px;
+    }
+
+    .publication {
+      padding: 22px 0 32px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .publication:last-child {
+      border-bottom: 0;
+    }
+
+    .publication h3 {
+      margin: 0 0 4px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 27px;
+      line-height: 1.3;
+    }
+
+    .publication p {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .pub-bottom {
       display: flex;
-      justify-content: flex-end;
-      gap: 24px;
-      margin-bottom: 40px;
-      font-size: 1.02rem;
-      font-family: var(--font-sans);
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 6px;
     }
 
-    nav.top-nav a {
-      color: #1f2937;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.15s ease;
-    }
-
-    nav.top-nav a:hover {
-      color: var(--accent-blue);
-    }
-
-    /* Content Typography */
-    h2.section-heading {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 1.8rem;
-      color: #0c2340;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    .about-section p {
-      font-size: 1.05rem;
-      color: #374151;
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
-
-    .publications-heading {
-      border-bottom: 1.5px solid var(--border-light);
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-      margin-top: 20px;
-    }
-
-    /* Publications List */
-    .pub-item {
-      margin-bottom: 30px;
-    }
-
-    .pub-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #0c2340;
-      line-height: 1.35;
-      margin-bottom: 5px;
-    }
-
-    .pub-authors {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .pub-authors strong {
-      color: #111827;
+    .venue {
+      color: var(--venue);
       font-weight: 600;
     }
 
-    .pub-meta-line {
+    .pub-links {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin-top: 6px;
       flex-wrap: wrap;
+      gap: 10px;
+      font-size: 21px;
     }
 
-    /* Badges */
-    .pub-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 2px 10px;
-      border: 1px solid #0b4f8a;
-      border-radius: 4px;
-      color: #0b4f8a;
+    .pub-links a,
+    .description-toggle {
+      padding: 5px 12px;
+      border: 1px solid var(--teal);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--teal);
+      font: inherit;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .pub-links a:hover,
+    .description-toggle:hover {
+      background: var(--tint);
       text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      background-color: #f7fafd;
-      transition: all 0.15s ease;
     }
 
-    .pub-badge:hover {
-      background-color: #0b4f8a;
-      color: #ffffff;
+    .pub-links a[aria-disabled="true"] {
+      cursor: default;
     }
 
-    /* Responsive for Tablets / Mobile */
-    @media (max-width: 860px) {
+    .short-description {
+      margin-top: 16px;
+      font-size: 20px;
+    }
+
+    .content ul {
+      padding-left: 26px;
+    }
+
+    .content li {
+      margin-bottom: 12px;
+    }
+
+    #contact p {
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 1250px) {
       body {
+        font-size: 20px;
+      }
+
+      .nav,
+      .container {
+        width: calc(100% - 80px);
+      }
+
+      .nav {
+        gap: 24px;
+        font-size: 22px;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+
+      .intro-row {
+        grid-template-columns: 320px minmax(0, 1fr);
+        gap: 30px;
+      }
+
+      .profile {
+        padding-right: 16px;
+      }
+
+      .portrait {
+        width: 270px;
+        height: 270px;
+      }
+
+      .profile p {
+        font-size: 20px;
+      }
+
+      #about p,
+      .publication p {
+        font-size: 22px;
+      }
+
+      .publication h3 {
+        font-size: 23px;
+      }
+
+      h2 {
+        font-size: 35px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        width: 100%;
+        padding: 20px 18px 0;
+        justify-content: center;
+        gap: 14px;
+        font-size: 19px;
+      }
+
+      .container {
+        width: calc(100% - 36px);
+        margin-top: 32px;
+      }
+
+      .intro-row {
+        display: block;
+        margin-bottom: 34px;
+        padding-bottom: 24px;
+      }
+
+      .profile {
+        margin-bottom: 30px;
+        padding: 0 0 24px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .portrait {
+        width: 250px;
+        height: 250px;
+        max-width: 100%;
+      }
+
+      .profile-links {
+        gap: 16px;
+        font-size: 19px;
+      }
+
+      #about h2 {
+        font-size: 30px;
+      }
+
+      #about p,
+      .publication p {
+        font-size: 20px;
+      }
+
+      h2 {
+        font-size: 31px;
+      }
+
+      .publication h3 {
+        font-size: 21px;
+      }
+
+      .pub-bottom {
+        align-items: flex-start;
         flex-direction: column;
       }
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-light);
-        padding: 40px 20px;
+
+      .pub-links {
+        font-size: 19px;
       }
-      .sidebar-links {
-        align-items: center;
-        padding-left: 0;
-      }
-      .main-content {
-        padding: 30px 20px 60px 20px;
-      }
-      nav.top-nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 16px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
     }
   </style>
 </head>
+
 <body>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#ta">Teaching</a>
+    <a href="#presentations">Talks</a>
+    <a href="#contact">Contact</a>
 
-  <!-- Left Sidebar -->
-  <aside class="sidebar">
-    <div class="photo-card">
-      <!-- To use your real picture, replace below with: <img src="mypic4.jpg" alt="Pinki Pradhan"> -->
-      <img src="mypic4.jpg" alt="Pinki Pradhan">
-    </div>
-    
-    <h1 class="name">Pinki Pradhan</h2>
-    <div class="role">PhD Student at NISER<br>Bhubaneswar</div>
-    
-    <div class="sidebar-divider"></div>
+    <button
+      type="button"
+      class="theme-toggle"
+      id="theme-toggle"
+      aria-pressed="false">
+      Dark theme
+    </button>
+  </nav>
 
-    <div class="sidebar-links">
-      <a href="https://scholar.google.com/citations?user=CIhKC4oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
-        Google Scholar
-      </a>
-      <a href="https://dblp.org/pid/400/7273.html" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M4.5 3A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h7.05a6.5 6.5 0 0 1-.05-.8v-6.4a6.5 6.5 0 0 1 6.5-6.5h3V4.5A1.5 1.5 0 0 0 19.5 3h-15zm13 8a4.5 4.5 0 0 0-4.5 4.5v4.5H21v-4.5a4.5 4.5 0 0 0-4.5-4.5z"/></svg>
-        DBLP
-      </a>
-    </div>
-  </aside>
+  <div class="container">
+    <section class="intro-row" aria-label="Profile and About Me">
+      <aside class="profile">
+        <h1 class="sr-only">Pinki Pradhan</h1>
 
-  <!-- Right Main Content -->
-  <main class="main-content">
-    
-    <!-- Top Nav -->
-    <nav class="top-nav">
-      <a href="#about">About</a>
-      <a href="#publications">Publications</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#talks">Talks</a>
-      <a href="#contact">Contact</a>
-    </nav>
+        <div class="portrait">
+          <span class="placeholder">Photo</span>
+          <img
+            src="mypic4.jpg"
+            alt="Pinki Pradhan"
+            onerror="this.hidden = true"
+            onload="this.previousElementSibling.hidden = true">
+        </div>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-      <h2 class="section-heading">About Me</h2>
-      <p>
-        I am a PhD student in theoretical computer science at NISER Bhubaneswar, advised by 
-        Dr. Anup Bhattacharya. My research focuses on randomized and sublinear algorithms, 
-        particularly sampling and estimation. I also study clustering with limited or noisy distance 
-        information.
-      </p>
+        <p>
+          PhD student<br>
+          NISER Bhubaneswar
+        </p>
+
+        <div class="profile-links">
+          <a
+            href="https://scholar.google.com/citations?user=CIhKC4oAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener noreferrer">
+            Google Scholar
+          </a>
+
+          <a
+            href="https://dblp.org/pid/400/7273.html"
+            target="_blank"
+            rel="noopener noreferrer">
+            DBLP
+          </a>
+        </div>
+      </aside>
+
+      <section id="about">
+        <h2>About Me</h2>
+        <p>
+          I am a PhD student in theoretical computer science at NISER
+          Bhubaneswar, advised by
+          <a
+            href="https://sites.google.com/site/anupbtcs"
+            target="_blank"
+            rel="noopener noreferrer">Dr. Anup Bhattacharya</a>.
+          My research focuses on randomized and sublinear algorithms,
+          particularly sampling and estimation. I also study clustering
+          with limited or noisy distance information.
+        </p>
+      </section>
     </section>
 
-    <!-- Publications Section -->
-    <section class="publications-section" id="publications">
-      <h2 class="section-heading publications-heading">Publications and manuscripts</h2>
+    <main class="content">
+      <section id="publications">
+        <h2>Publications and manuscripts</h2>
 
-      <!-- Paper 1 -->
-      <article class="pub-item">
-        <div class="pub-title">
-          Almost Instance Optimal Sum and Moment Estimation Using Weighted Sampling
-        </div>
-        <div class="pub-authors">
-          Anup Bhattacharya, Suryendu Mondal, and <strong>Pinki Pradhan</strong>
-        </div>
-        <div class="pub-meta-line">
-          <span>2026 · Manuscript</span>
-          <a class="pub-badge" href="https://arxiv.org/pdf/2610.08134" target="_blank">📄 Paper</a>
-          <a class="pub-badge" href="https://arxiv.org/abs/2610.08134" target="_blank">arXiv</a>
-        </div>
-      </article>
+        <article class="publication">
+          <h3>
+            Almost Instance Optimal Sum and Moment Estimation Using
+            Weighted Sampling
+          </h3>
+          <p>
+            Anup Bhattacharya, Suryendu Mondal, and
+            <strong>Pinki Pradhan</strong>
+          </p>
 
-      <!-- Paper 2 -->
-      <article class="pub-item">
-        <div class="pub-title">
-          Improved Algorithms for Clustering with Noisy Distance Oracles
-        </div>
-        <div class="pub-authors">
-          Anup Bhattacharya, Rajesh Jaiswal, and <strong>Pinki Pradhan</strong>
-        </div>
-        <div class="pub-meta-line">
-          <span>AISTATS 2026</span>
-          <a class="pub-badge" href="https://arxiv.org/pdf/2602.18389" target="_blank">📄 Paper</a>
-          <a class="pub-badge" href="https://arxiv.org/abs/2602.18389" target="_blank">arXiv</a>
-          <a class="pub-badge" href="AISTATS2026.pdf" target="_blank">↗ Slides</a>
-          <a class="pub-badge" href="#" target="_blank">💻 Code</a>
-        </div>
-      </article>
+          <div class="pub-bottom">
+            <p class="venue">2026 · Manuscript</p>
 
-      <!-- Paper 3 -->
-      <article class="pub-item">
-        <div class="pub-title">
-          Improved Sublinear-time Moment Estimation Using Weighted Sampling
-        </div>
-        <div class="pub-authors">
-          Anup Bhattacharya and <strong>Pinki Pradhan</strong>
-        </div>
-        <div class="pub-meta-line">
-          <span>CIAC 2025</span>
-          <a class="pub-badge" href="https://arxiv.org/pdf/2502.15333" target="_blank">📄 Paper</a>
-          <a class="pub-badge" href="https://arxiv.org/abs/2502.15333" target="_blank">arXiv</a>
-          <a class="pub-badge" href="ciac2025.pdf" target="_blank">↗ Slides</a>
-        </div>
-      </article>
+            <div class="pub-links">
+              <a
+                href="https://arxiv.org/pdf/2610.08134"
+                target="_blank"
+                rel="noopener noreferrer">
+                Paper
+              </a>
 
-    </section>
+              <!-- Add your slides URL to href and remove aria-disabled. -->
+              <a href="" aria-disabled="true">Slides</a>
 
-  </main>
+              <button
+                type="button"
+                class="description-toggle"
+                aria-expanded="false"
+                aria-controls="description-0">
+                Short description
+              </button>
+            </div>
+          </div>
 
+          <div id="description-0" class="short-description" hidden>
+            <!-- Add your short description here. -->
+          </div>
+        </article>
+
+        <article class="publication">
+          <h3>
+            Improved Algorithms for Clustering with Noisy Distance Oracles
+          </h3>
+          <p>
+            Anup Bhattacharya, Ragesh Jaiswal, and
+            <strong>Pinki Pradhan</strong>
+          </p>
+
+          <div class="pub-bottom">
+            <p class="venue">AISTATS 2026</p>
+
+            <div class="pub-links">
+              <a
+                href="https://arxiv.org/pdf/2602.18389"
+                target="_blank"
+                rel="noopener noreferrer">
+                Paper
+              </a>
+
+              <a
+                href="AISTATS2026.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                Slides
+              </a>
+
+              <!-- Add your code URL to href and remove aria-disabled. -->
+              <a href="" aria-disabled="true">Code</a>
+
+              <button
+                type="button"
+                class="description-toggle"
+                aria-expanded="false"
+                aria-controls="description-1">
+                Short description
+              </button>
+            </div>
+          </div>
+
+          <div id="description-1" class="short-description" hidden>
+            <!-- Add your short description here. -->
+          </div>
+        </article>
+
+        <article class="publication">
+          <h3>
+            Improved Sublinear-time Moment Estimation Using Weighted Sampling
+          </h3>
+          <p>
+            Anup Bhattacharya and <strong>Pinki Pradhan</strong>
+          </p>
+
+          <div class="pub-bottom">
+            <p class="venue">CIAC 2025</p>
+
+            <div class="pub-links">
+              <a
+                href="https://arxiv.org/pdf/2502.15333"
+                target="_blank"
+                rel="noopener noreferrer">
+                Paper
+              </a>
+
+              <a
+                href="ciac2025.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                Slides
+              </a>
+
+              <button
+                type="button"
+                class="description-toggle"
+                aria-expanded="false"
+                aria-controls="description-2">
+                Short description
+              </button>
+            </div>
+          </div>
+
+          <div id="description-2" class="short-description" hidden>
+            <!-- Add your short description here. -->
+          </div>
+        </article>
+      </section>
+
+      <section id="ta">
+        <h2>Teaching Assistantship</h2>
+        <ul>
+          <li>Spring 2025: Advanced Machine Learning</li>
+          <li>Autumn 2024: Randomized Algorithms</li>
+          <li>Fall 2023: Algorithms</li>
+        </ul>
+      </section>
+
+      <section id="presentations">
+        <h2>Conference and Workshop Presentations</h2>
+        <ul>
+          <li>
+            May 2025: Poster Presentation at GALP Workshop,
+            ICTS Bangalore, India
+          </li>
+          <li>
+            June 2025: Oral Presentation at CIAC 2025, Rome, Italy
+          </li>
+          <li>
+            May 2026: Poster Presentation at AISTATS 2026,
+            Tangier, Morocco
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:pinki.pradhan@niser.ac.in">
+            pinki.pradhan@niser.ac.in
+          </a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const themeButton = document.getElementById("theme-toggle");
+
+    function setDarkTheme(dark) {
+      document.body.classList.toggle("dark", dark);
+      themeButton.textContent = dark ? "Light theme" : "Dark theme";
+      themeButton.setAttribute("aria-pressed", String(dark));
+    }
+
+    let savedTheme = null;
+
+    try {
+      savedTheme = localStorage.getItem("homepage-theme");
+    } catch (_) {}
+
+    setDarkTheme(savedTheme === "dark");
+
+    themeButton.addEventListener("click", () => {
+      const dark = !document.body.classList.contains("dark");
+      setDarkTheme(dark);
+
+      try {
+        localStorage.setItem("homepage-theme", dark ? "dark" : "light");
+      } catch (_) {}
+    });
+
+    document.querySelectorAll(".description-toggle").forEach(button => {
+      button.addEventListener("click", () => {
+        const panel = document.getElementById(
+          button.getAttribute("aria-controls")
+        );
+
+        const expanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!expanded));
+        panel.hidden = expanded;
+      });
+    });
+
+    // Prevent empty placeholder links from reloading the page.
+    document.querySelectorAll('.pub-links a[href=""]').forEach(link => {
+      link.addEventListener("click", event => {
+        if (!link.getAttribute("href")) {
+          event.preventDefault();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
